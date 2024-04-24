@@ -7,4 +7,4 @@ COPY . /app
 
 EXPOSE 4567
 
-CMD["ruby", "server.rb"]
+CMD ["ruby", "server.rb"]
