@@ -1,0 +1,23 @@
+permissions:
+  contents: read
+  
+on:
+  push:
+    branches:
+      - main
+      
+jobs: 
+  build-and-run:
+    runs-on: self-hosted
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Docker Build
+        run: |
+          docker build -t ruby-server-image -f ./Dockerfile .
+          docker stop ruby-server-container || true
+          docker rm ruby-server-container || true
+          docker run -d --name ruby-server-container -p 4567
+
