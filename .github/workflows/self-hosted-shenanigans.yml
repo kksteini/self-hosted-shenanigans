@@ -19,5 +19,5 @@ jobs:
           docker build -t ruby-server-image -f ./Dockerfile .
           docker stop ruby-server-container || true
           docker rm ruby-server-container || true
-          docker run -d --name ruby-server-container -p 4567
+          docker run -d --name ruby-server-container -p 4567:4567 ruby-server-image
 
